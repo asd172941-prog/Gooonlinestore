@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استور جو اون لاين</title>
+    <style>
+        /* إعدادات الخط والشكل العام */
+        body {
+            background-color: #ffffff; /* الخلفية بيضا */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* تنسيق رسالة الترحيب */
+        h1 {
+            color: #000000; /* الخط أسود */
+            font-size: 24px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* حاوية الأزرار */
+        .container {
+            width: 100%;
+            max-width: 400px; /* مناسب جداً للموبايل */
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* تنسيق الأزرار */
+        .btn {
+            background-color: #007bff; /* اللون الأزرق */
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 12px; /* زوايا دائرية لشكل شيك */
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* تأثير عند الضغط */
+        .btn:active {
+            transform: scale(0.95);
+            background-color: #0056b3;
+        }
+
+        /* زر المطور بلون مختلف شوية لتميزه */
+        .dev-btn {
+            background-color: #25D366; /* لون الواتساب */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>نورت استور جو اون لاين</h1>
+
+    <div class="container">
+        <a href="https://wa.me/+201121507679" class="btn dev-btn">التواصل مع المطور</a>
+
+        <button class="btn" onclick="showAlert()">عرض أساور بلاستيك</button>
+        <button class="btn" onclick="showAlert()">عرض سلاسل فضي</button>
+        <button class="btn" onclick="showAlert()">عرض سلاسل ذهبي</button>
+        <button class="btn" onclick="showAlert()">عرض حلقان بناتي</button>
+        <button class="btn" onclick="showAlert()">عرض سلاسل بناتي</button>
+        <button class="btn" onclick="showAlert()">عرض أساور فضي شبابي</button>
+        <button class="btn" onclick="showAlert()">عرض أساور ذهبي شبابي</button>
+        <button class="btn" onclick="showAlert()">عرض أساور فضي بناتي</button>
+        <button class="btn" onclick="showAlert()">عرض أساور ذهبي بناتي</button>
+    </div>
+
+    <script>
+        // وظيفة إظهار الرسالة
+        function showAlert() {
+            alert("لم يتم إضافة شئ بعد 🤗🥀");
+        }
+    </script>
+
+</body>
+</html>
