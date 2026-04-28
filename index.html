@@ -3,88 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>استور جو اون لاين</title>
+    <title>أخويا هيما 🫂♥️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* إعدادات الخط والشكل العام */
-        body {
-            background-color: #ffffff; /* الخلفية بيضا */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* تنسيق رسالة الترحيب */
-        h1 {
-            color: #000000; /* الخط أسود */
-            font-size: 24px;
-            margin-bottom: 30px;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        /* حاوية الأزرار */
-        .container {
-            width: 100%;
-            max-width: 400px; /* مناسب جداً للموبايل */
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        /* تنسيق الأزرار */
-        .btn {
-            background-color: #007bff; /* اللون الأزرق */
+        body { 
+            background-color: #000000; 
+            font-family: 'Cairo', sans-serif; 
+            margin: 0; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
             color: white;
-            border: none;
-            padding: 15px 20px;
-            border-radius: 12px; /* زوايا دائرية لشكل شيك */
+        }
+        .card { 
+            background: #121212; 
+            width: 85%; 
+            max-width: 400px; 
+            padding: 25px; 
+            border-radius: 20px; 
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.05); 
+            text-align: center; 
+            border: 1px solid #333; 
+        }
+        .page { 
+            display: none; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+        .active { 
+            display: flex; 
+            animation: fadeIn 0.6s ease-in-out; 
+        }
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(10px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+        h1 { color: #ffffff; font-size: 26px; margin-bottom: 15px; letter-spacing: 1px; }
+        .main-img { 
+            width: 100%; 
+            border-radius: 12px; 
+            margin: 20px 0; 
+            border: 1px solid #444;
+        }
+        .text-content {
+            font-size: 17px;
+            color: #e0e0e0;
+            line-height: 1.8;
+            margin: 15px 0;
+        }
+        .next-btn { 
+            background: #1a1a1a; 
+            border: 1px solid #444;
+            color: white;
             font-size: 16px;
-            cursor: pointer;
-            text-decoration: none;
-            text-align: center;
-            transition: transform 0.2s, background-color 0.2s;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 12px 25px; 
+            border-radius: 30px; 
+            cursor: pointer; 
+            margin-top: 15px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-
-        /* تأثير عند الضغط */
-        .btn:active {
-            transform: scale(0.95);
-            background-color: #0056b3;
+        .next-btn:hover { 
+            background: #ffffff; 
+            color: black;
         }
-
-        /* زر المطور بلون مختلف شوية لتميزه */
-        .dev-btn {
-            background-color: #25D366; /* لون الواتساب */
+        .footer-text {
+            font-size: 14px;
+            color: #888;
+            margin-top: 25px;
+            border-top: 1px solid #222;
+            padding-top: 15px;
         }
     </style>
 </head>
 <body>
 
-    <h1>نورت استور جو اون لاين</h1>
+    <div class="card">
+        <div id="page1" class="page active">
+            <h1>اخــويا هـــيما🫂♥️</h1>
+            <img src="https://raw.githubusercontent.com/asd172941-prog/Gooonlinestore/main/4788d84368c6e48b88aac854c5b2d0aa.jpg" class="main-img">
+            <p class="text-content">ربنا يخليك ليا يا أجدع حد ليا</p>
+            <button class="next-btn" onclick="nextPage(1, 2)">
+                ادخل علي الصفحه التانيه يا قلب اخوك ♥️ >
+            </button>
+        </div>
 
-    <div class="container">
-        <a href="https://wa.me/+201121507679" class="btn dev-btn">التواصل مع المطور</a>
+        <div id="page2" class="page">
+            <img src="https://raw.githubusercontent.com/asd172941-prog/Gooonlinestore/main/27e3f8fc7d8e14bdb48cd27d0f47bba3.jpg" class="main-img">
+            <div class="text-content">
+                انت اخ مـ يتعوضش ربنا يخليك ليا <br>
+                انتـ اسرع واحد عرفتها في صحابي و اكتر واحد شقي 🫂<br>
+                انت اخويا و الي يزعلك يزعلني 🫂♥️<br>
+                امك امي ابوك ابويا اختك اختي و الي يزعل حد من عندك اكنه زعل حد عندي 🫂♥️<br>
+                ربنا يخليك ليا يا شقو 🫂♥️
+            </div>
+            <button class="next-btn" onclick="nextPage(2, 3)">
+                ادخل شوف سايبلك ايه >
+            </button>
+        </div>
 
-        <button class="btn" onclick="showAlert()">عرض أساور بلاستيك</button>
-        <button class="btn" onclick="showAlert()">عرض سلاسل فضي</button>
-        <button class="btn" onclick="showAlert()">عرض سلاسل ذهبي</button>
-        <button class="btn" onclick="showAlert()">عرض حلقان بناتي</button>
-        <button class="btn" onclick="showAlert()">عرض سلاسل بناتي</button>
-        <button class="btn" onclick="showAlert()">عرض أساور فضي شبابي</button>
-        <button class="btn" onclick="showAlert()">عرض أساور ذهبي شبابي</button>
-        <button class="btn" onclick="showAlert()">عرض أساور فضي بناتي</button>
-        <button class="btn" onclick="showAlert()">عرض أساور ذهبي بناتي</button>
+        <div id="page3" class="page">
+            <img src="https://raw.githubusercontent.com/asd172941-prog/Gooonlinestore/main/3f6bb090a6140ab65f886d8083302653.jpg" class="main-img">
+            <div class="text-content">
+                اوعي تزعل مني و متقوليش انا زعلت منك عشان عملت كزا و كزا و اوعي تكون مضايق و متحكيش <br>
+                و انا في يوم فرحك هفشخلك الدنيا 🫂♥️
+            </div>
+            <div class="footer-text">حبق يا شقو 🫂</div>
+        </div>
     </div>
 
     <script>
-        // وظيفة إظهار الرسالة
-        function showAlert() {
-            alert("لم يتم إضافة شئ بعد 🤗🥀");
+        function nextPage(current, next) {
+            document.getElementById('page' + current).classList.remove('active');
+            document.getElementById('page' + next).classList.add('active');
         }
     </script>
-
 </body>
 </html>
