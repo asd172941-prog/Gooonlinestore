@@ -3,123 +3,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أخويا هيما 🫂♥️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <title>تحدي الدول - ROSIE</title>
     <style>
-        body { 
-            background-color: #000000; 
-            font-family: 'Cairo', sans-serif; 
-            margin: 0; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
-            color: white;
-        }
-        .card { 
-            background: #121212; 
-            width: 85%; 
-            max-width: 400px; 
-            padding: 25px; 
-            border-radius: 20px; 
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.05); 
-            text-align: center; 
-            border: 1px solid #333; 
-        }
-        .page { 
-            display: none; 
-            flex-direction: column; 
-            align-items: center; 
-        }
-        .active { 
-            display: flex; 
-            animation: fadeIn 0.6s ease-in-out; 
-        }
-        @keyframes fadeIn { 
-            from { opacity: 0; transform: translateY(10px); } 
-            to { opacity: 1; transform: translateY(0); } 
-        }
-        h1 { color: #ffffff; font-size: 26px; margin-bottom: 15px; letter-spacing: 1px; }
-        .main-img { 
-            width: 100%; 
-            border-radius: 12px; 
-            margin: 20px 0; 
-            border: 1px solid #444;
-        }
-        .text-content {
-            font-size: 17px;
-            color: #e0e0e0;
-            line-height: 1.8;
-            margin: 15px 0;
-        }
-        .next-btn { 
-            background: #1a1a1a; 
-            border: 1px solid #444;
-            color: white;
-            font-size: 16px;
-            padding: 12px 25px; 
-            border-radius: 30px; 
-            cursor: pointer; 
-            margin-top: 15px;
-            transition: 0.3s;
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
         }
-        .next-btn:hover { 
-            background: #ffffff; 
-            color: black;
+
+        h1 {
+            text-shadow: 0 0 15px rgba(255,255,255,0.5);
+            margin-bottom: 10px;
         }
-        .footer-text {
-            font-size: 14px;
-            color: #888;
-            margin-top: 25px;
-            border-top: 1px solid #222;
-            padding-top: 15px;
+
+        .stats {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            color: #00ffcc;
+        }
+
+        #game-container {
+            text-align: center;
+            width: 95%;
+            max-width: 500px;
+        }
+
+        .level-info {
+            color: #aaa;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .letters-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .letter-box {
+            background-color: #111;
+            border: none;
+            color: #fff;
+            padding: 15px;
+            min-width: 50px;
+            font-size: 1.4rem;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 6px 0 #222, 0 10px 20px rgba(255, 255, 255, 0.05);
+            transition: all 0.1s;
+            position: relative;
+        }
+
+        .letter-box:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #222;
+        }
+
+        .letter-box::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 15%;
+            width: 70%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.4);
+            filter: blur(3px);
+        }
+
+        .answer-display {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            min-height: 45px;
+            border-bottom: 2px dashed #333;
+            color: #fff;
+        }
+
+        .main-btn {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 12px 20px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 1rem;
+        }
+
+        .hint-btn { background: #fff; color: #000; }
+
+        #flag-hint { font-size: 4rem; margin: 15px 0; display: none; }
+
+        .message { margin-top: 20px; font-weight: bold; min-height: 25px; }
+
+        .next-btn {
+            display: none;
+            font-size: 3.5rem;
+            cursor: pointer;
+            color: #2ecc71;
+            margin-top: 15px;
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <div id="page1" class="page active">
-            <h1>اخــويا هـــيما🫂♥️</h1>
-            <img src="https://raw.githubusercontent.com/asd172941-prog/Gooonlinestore/main/4788d84368c6e48b88aac854c5b2d0aa.jpg" class="main-img">
-            <p class="text-content">ربنا يخليك ليا يا أجدع حد ليا</p>
-            <button class="next-btn" onclick="nextPage(1, 2)">
-                ادخل علي الصفحه التانيه يا قلب اخوك ♥️ >
-            </button>
+    <h1>تحدي الدول</h1>
+    
+    <div class="stats">
+        توكن روسي: <span id="tokens">0</span> | المرحلة: <span id="current-stage">1</span>
+    </div>
+
+    <div id="game-container">
+        <div class="level-info" id="difficulty-text">المستوى: سهل</div>
+        <div class="answer-display" id="answer-view"></div>
+        <div id="flag-hint"></div>
+        <div class="letters-container" id="letters-grid"></div>
+        
+        <div class="controls">
+            <button class="main-btn hint-btn" onclick="useHint()">استخدام تلميح (2 توكن)</button>
+            <button class="main-btn" onclick="resetCurrentWord()">مسح</button>
         </div>
 
-        <div id="page2" class="page">
-            <img src="https://raw.githubusercontent.com/asd172941-prog/Gooonlinestore/main/27e3f8fc7d8e14bdb48cd27d0f47bba3.jpg" class="main-img">
-            <div class="text-content">
-                انت اخ مـ يتعوضش ربنا يخليك ليا <br>
-                انتـ اسرع واحد عرفتها في صحابي و اكتر واحد شقي 🫂<br>
-                انت اخويا و الي يزعلك يزعلني 🫂♥️<br>
-                امك امي ابوك ابويا اختك اختي و الي يزعل حد من عندك اكنه زعل حد عندي 🫂♥️<br>
-                ربنا يخليك ليا يا شقو 🫂♥️
-            </div>
-            <button class="next-btn" onclick="nextPage(2, 3)">
-                ادخل شوف سايبلك ايه >
-            </button>
-        </div>
-
-        <div id="page3" class="page">
-            <img src="https://raw.githubusercontent.com/asd172941-prog/Gooonlinestore/main/3f6bb090a6140ab65f886d8083302653.jpg" class="main-img">
-            <div class="text-content">
-                اوعي تزعل مني و متقوليش انا زعلت منك عشان عملت كزا و كزا و اوعي تكون مضايق و متحكيش <br>
-                و انا في يوم فرحك هفشخلك الدنيا 🫂♥️
-            </div>
-            <div class="footer-text">حبق يا شقو 🫂</div>
-        </div>
+        <div class="message" id="msg"></div>
+        <div class="next-btn" id="next-stage-btn" onclick="loadNextLevel()">✅</div>
     </div>
 
     <script>
-        function nextPage(current, next) {
-            document.getElementById('page' + current).classList.remove('active');
-            document.getElementById('page' + next).classList.add('active');
+        // لستة الدول مقسمة 4 مستويات (25 دولة لكل مستوى)
+        const countriesData = [
+            // الربع الأول: سهل (1-25)
+            {name:"مصر", flag:"🇪🇬"}, {name:"قطر", flag:"🇶🇦"}, {name:"عمان", flag:"🇴🇲"}, {name:"ليبيا", flag:"🇱🇾"}, {name:"سوريا", flag:"🇸🇾"},
+            {name:"لبنان", flag:"🇱🇧"}, {name:"تونس", flag:"🇹🇳"}, {name:"اليمن", flag:"🇾🇪"}, {name:"كوبا", flag:"🇨🇺"}, {name:"مالي", flag:"🇲🇱"},
+            {name:"بيرو", flag:"🇵🇪"}, {name:"الصين", flag:"🇨🇳"}, {name:"الهند", flag:"🇮🇳"}, {name:"اليابان", flag:"🇯🇵"}, {name:"فرنسا", flag:"🇫🇷"},
+            {name:"إيطاليا", flag:"🇮🇹"}, {name:"كندا", flag:"🇨🇦"}, {name:"روسيا", flag:"🇷🇺"}, {name:"العراق", flag:"🇮🇶"}, {name:"الأردن", flag:"🇯🇴"},
+            {name:"السودان", flag:"🇸🇩"}, {name:"المغرب", flag:"🇲🇦"}, {name:"الكويت", flag:"🇰🇼"}, {name:"البحرين", flag:"🇧🇭"}, {name:"فلسطين", flag:"🇵🇸"},
+            
+            // الربع الثاني: عادي (26-50)
+            {name:"البرازيل", flag:"🇧🇷"}, {name:"ألمانيا", flag:"🇩🇪"}, {name:"المكسيك", flag:"🇲🇽"}, {name:"إسبانيا", flag:"🇪🇸"}, {name:"تركيا", flag:"🇹🇷"},
+            {name:"نيجيريا", flag:"🇳🇬"}, {name:"فيتنام", flag:"🇻🇳"}, {name:"تايلاند", flag:"🇹🇭"}, {name:"إيران", flag:"🇮🇷"}, {name:"الجزائر", flag:"🇩🇿"},
+            {name:"باكستان", flag:"🇵🇰"}, {name:"بولندا", flag:"🇵🇱"}, {name:"رومانيا", flag:"🇷🇴"}, {name:"هولندا", flag:"🇳🇱"}, {name:"بلجيكا", flag:"🇧🇪"},
+            {name:"اليونان", flag:"🇬🇷"}, {name:"البرتغال", flag:"🇵🇹"}, {name:"السويد", flag:"🇸🇪"}, {name:"النرويج", flag:"🇳🇴"}, {name:"النمسا", flag:"🇦🇹"},
+            {name:"سويسرا", flag:"🇨🇭"}, {name:"تشيلي", flag:"🇨🇱"}, {name:"كولومبيا", flag:"🇨🇴"}, {name:"أنجولا", flag:"🇦🇴"}, {name:"إثيوبيا", flag:"🇪🇹"},
+
+            // الربع الثالث: صعب (51-75)
+            {name:"أوزبكستان", flag:"🇺🇿"}, {name:"موريتانيا", flag:"🇲🇷"}, {name:"سريلانكا", flag:"🇱🇰"}, {name:"بنجلاديش", flag:"🇧🇩"}, {name:"كازاخستان", flag:"🇰🇿"},
+            {name:"أذربيجان", flag:"🇦🇿"}, {name:"البوسنة", flag:"🇧🇦"}, {name:"كرواتيا", flag:"🇭🇷"}, {name:"أوروجواي", flag:"🇺🇾"}, {name:"باراجواي", flag:"🇵🇾"},
+            {name:"فنزويلا", flag:"🇻🇪"}, {name:"سنغافورة", flag:"🇸🇬"}, {name:"ماليزيا", flag:"🇲🇾"}, {name:"كمبوديا", flag:"🇰🇭"}, {name:"نيوزيلندا", flag:"🇳🇿"},
+            {name:"ألبانيا", flag:"🇦🇱"}, {name:"أرمينيا", flag:"🇦🇲"}, {name:"جورجيا", flag:"🇬🇪"}, {name:"ناميبيا", flag:"🇳🇦"}, {name:"بوتسوانا", flag:"🇧🇼"},
+            {name:"زيمبابوي", flag:"🇿🇼"}, {name:"أيسلندا", flag:"🇮🇸"}, {name:"إستونيا", flag:"🇪🇪"}, {name:"لاتفيا", flag:"🇱🇻"}, {name:"ليتوانيا", flag:"🇱🇹"},
+
+            // الربع الرابع: مستحيل (76-100+)
+            {name:"قرغيزستان", flag:"🇰🇬"}, {name:"طاجيكستان", flag:"🇹🇯"}, {name:"تركمانستان", flag:"🇹🇲"}, {name:"إريتريا", flag:"🇪🇷"}, {name:"ميكرونيزيا", flag:"🇫🇲"},
+            {name:"موريشيوس", flag:"🇲🇺"}, {name:"سيشل", flag:"🇸🇨"}, {name:"فانواتو", flag:"🇻🇺"}, {name:"بالاو", flag:"🇵🇼"}, {name:"كيريباتي", flag:"🇰🇮"},
+            {name:"إسواتيني", flag:"🇸🇿"}, {name:"ليسوتو", flag:"🇱🇸"}, {name:"بوروندي", flag:"🇧🇮"}, {name:"جيبوتي", flag:"🇩🇯"}, {name:"سورينام", flag:"🇸🇷"},
+            {name:"جويانا", flag:"🇬🇾"}, {name:"بليز", flag:"🇧🇿"}, {name:"جوادلوب", flag:"🇬🇵"}, {name:"مارتينيك", flag:"🇲🇶"}, {name:"ريونيون", flag:"🇷🇪"},
+            {name:"أنتيغوا وباربودا", flag:"🇦🇬"}, {name:"سانت كيتس ونيفيس", flag:"🇰🇳"}, {name:"دومينيكا", flag:"🇩🇲"}, {name:"سانت لوسيا", flag:"🇱🇨"}, {name:"توفالو", flag:"🇹🇻"}
+        ];
+
+        let currentIndex = 0;
+        let tokens = 0;
+        let correctInRow = 0;
+        let currentAnswer = "";
+
+        function initGame() {
+            const country = countriesData[currentIndex];
+            currentAnswer = "";
+            document.getElementById('answer-view').innerText = "";
+            document.getElementById('msg').innerText = "";
+            document.getElementById('next-stage-btn').style.display = "none";
+            document.getElementById('flag-hint').style.display = "none";
+            
+            // تحديد المستوى كل 25 مرحلة
+            let diff = "سهل";
+            if (currentIndex >= 25) diff = "عادي";
+            if (currentIndex >= 50) diff = "صعب";
+            if (currentIndex >= 75) diff = "مستحيل";
+            document.getElementById('difficulty-text').innerText = "المستوى: " + diff;
+
+            let letters = country.name.split('').filter(l => l !== " ");
+            letters = letters.sort(() => Math.random() - 0.5);
+
+            const grid = document.getElementById('letters-grid');
+            grid.innerHTML = "";
+            letters.forEach(char => {
+                const btn = document.createElement('button');
+                btn.className = 'letter-box';
+                btn.innerText = char;
+                btn.onclick = () => {
+                    currentAnswer += char;
+                    document.getElementById('answer-view').innerText = currentAnswer;
+                    btn.style.visibility = "hidden";
+                    if (currentAnswer.length === country.name.replace(/\s/g, '').length) checkAnswer();
+                };
+                grid.appendChild(btn);
+            });
         }
+
+        function checkAnswer() {
+            const target = countriesData[currentIndex].name.replace(/\s/g, '');
+            const msgEl = document.getElementById('msg');
+            if (currentAnswer === target) {
+                msgEl.style.color = "#2ecc71";
+                msgEl.innerText = "روسي يوضح لك: إجابة صحيحة بطل!";
+                correctInRow++;
+                if (correctInRow % 2 === 0) {
+                    tokens++;
+                    document.getElementById('tokens').innerText = tokens;
+                }
+                document.getElementById('next-stage-btn').style.display = "block";
+            } else {
+                msgEl.style.color = "#e74c3c";
+                msgEl.innerText = "روسي بيقولك ركز!";
+                setTimeout(resetCurrentWord, 1000);
+            }
+        }
+
+        function resetCurrentWord() {
+            currentAnswer = "";
+            document.getElementById('answer-view').innerText = "";
+            document.getElementById('msg').innerText = "";
+            document.querySelectorAll('.letter-box').forEach(b => b.style.visibility = "visible");
+        }
+
+        function useHint() {
+            if (tokens >= 2) {
+                tokens -= 2;
+                document.getElementById('tokens').innerText = tokens;
+                document.getElementById('flag-hint').innerText = countriesData[currentIndex].flag;
+                document.getElementById('flag-hint').style.display = "block";
+                document.getElementById('msg').innerText = "";
+            } else {
+                document.getElementById('msg').style.color = "#00ffcc";
+                document.getElementById('msg').innerText = "ما عندكش توكن كافي يا صاحبي!";
+            }
+        }
+
+        function loadNextLevel() {
+            currentIndex++;
+            if (currentIndex < countriesData.length) {
+                document.getElementById('current-stage').innerText = currentIndex + 1;
+                initGame();
+            } else {
+                document.getElementById('msg').innerText = "أنت وحش! خلصت كل الدول!";
+            }
+        }
+
+        initGame();
     </script>
 </body>
 </html>
