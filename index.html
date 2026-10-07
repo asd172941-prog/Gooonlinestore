@@ -1,262 +1,574 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تحدي الدول - ROSIE</title>
-    <style>
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اختبار صاحب يوسف 🔥</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  :root{
+    --gold:#e6b84c;
+    --gold-2:#f7d67a;
+    --bg:#050505;
+    --line:rgba(255,255,255,.09);
+  }
+  body{
+    font-family:'Cairo',system-ui,sans-serif;
+    background:var(--bg);
+    color:#f2f2f2;
+    min-height:100vh;
+    display:flex;align-items:center;justify-content:center;
+    padding:18px;
+    position:relative;overflow-x:hidden;
+  }
+  body::before{
+    content:'';position:fixed;inset:0;pointer-events:none;
+    background:
+      radial-gradient(circle at 15% 10%, rgba(230,184,76,.14), transparent 45%),
+      radial-gradient(circle at 85% 90%, rgba(230,184,76,.09), transparent 45%);
+  }
+  .card{
+    position:relative;z-index:2;
+    width:100%;max-width:640px;
+    background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.015));
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:30px 26px 26px;
+    backdrop-filter:blur(14px);
+    box-shadow:0 30px 70px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.06);
+  }
+  .screen{display:none;animation:fade .45s ease}
+  .screen.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
-        h1 {
-            text-shadow: 0 0 15px rgba(255,255,255,0.5);
-            margin-bottom: 10px;
-        }
+  .logo{
+    width:84px;height:84px;margin:0 auto 18px;
+    border-radius:26px;display:grid;place-items:center;
+    background:linear-gradient(145deg,#1a1a1a,#000);
+    border:1px solid rgba(230,184,76,.4);
+    font-size:38px;font-weight:900;color:var(--gold);
+    box-shadow:0 0 40px rgba(230,184,76,.18);
+  }
+  h1{font-size:27px;font-weight:900;text-align:center;line-height:1.5}
+  h1 span{color:var(--gold)}
+  .sub{
+    text-align:center;color:#9a9a9a;font-size:14.5px;line-height:1.9;
+    margin:12px 0 26px;
+  }
+  .field-label{font-size:14px;color:#bdbdbd;margin-bottom:9px;display:block;font-weight:600}
+  input[type=text]{
+    width:100%;padding:15px 18px;font-size:16px;font-family:inherit;
+    background:rgba(0,0,0,.55);
+    border:1px solid var(--line);border-radius:15px;color:#fff;
+    outline:none;transition:.25s;
+  }
+  input[type=text]:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(230,184,76,.12)}
+  input::placeholder{color:#5c5c5c}
 
-        .stats {
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-            color: #00ffcc;
-        }
+  .btn{
+    width:100%;padding:16px;margin-top:18px;
+    font-family:inherit;font-size:17px;font-weight:800;cursor:pointer;
+    border:none;border-radius:15px;
+    background:linear-gradient(135deg,var(--gold),var(--gold-2));
+    color:#0a0a0a;
+    transition:.2s;
+    box-shadow:0 10px 30px rgba(230,184,76,.22);
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(230,184,76,.35)}
+  .btn:active{transform:scale(.98)}
+  .btn:disabled{opacity:.35;cursor:not-allowed;transform:none;box-shadow:none}
 
-        #game-container {
-            text-align: center;
-            width: 95%;
-            max-width: 500px;
-        }
+  .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:13.5px;color:#8d8d8d;font-weight:600}
+  .topbar b{color:var(--gold)}
+  .progress{height:7px;background:rgba(255,255,255,.07);border-radius:99px;overflow:hidden;margin-bottom:26px}
+  .progress i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--gold),var(--gold-2));transition:width .4s cubic-bezier(.4,0,.2,1)}
+  .q-text{font-size:19px;font-weight:800;line-height:1.8;margin-bottom:20px}
+  .q-text .num{color:var(--gold);font-size:15px;display:block;margin-bottom:6px;font-weight:700}
 
-        .level-info {
-            color: #aaa;
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
+  .opt{
+    width:100%;text-align:right;font-family:inherit;font-size:15px;font-weight:600;
+    padding:15px 18px;margin-bottom:11px;cursor:pointer;
+    background:rgba(255,255,255,.03);
+    border:1.5px solid var(--line);border-radius:14px;color:#e8e8e8;
+    transition:.18s;display:flex;align-items:center;gap:12px;
+    line-height:1.6;
+  }
+  .opt:hover{background:rgba(255,255,255,.06);border-color:rgba(230,184,76,.45);transform:translateX(-3px)}
+  .opt .bullet{
+    width:22px;height:22px;border-radius:50%;flex-shrink:0;
+    border:2px solid rgba(255,255,255,.22);transition:.18s;
+  }
+  .opt.selected{
+    background:linear-gradient(135deg,rgba(230,184,76,.16),rgba(230,184,76,.06));
+    border-color:var(--gold);color:#fff;
+  }
+  .opt.selected .bullet{
+    border-color:var(--gold);
+    background:var(--gold);
+    box-shadow:inset 0 0 0 4px #0b0b0b;
+  }
+  .back-link{
+    display:block;text-align:center;margin-top:16px;font-size:13.5px;color:#6e6e6e;
+    cursor:pointer;background:none;border:none;font-family:inherit;width:100%;
+  }
+  .back-link:hover{color:var(--gold)}
 
-        .letters-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 30px;
-        }
-
-        .letter-box {
-            background-color: #111;
-            border: none;
-            color: #fff;
-            padding: 15px;
-            min-width: 50px;
-            font-size: 1.4rem;
-            cursor: pointer;
-            border-radius: 10px;
-            box-shadow: 0 6px 0 #222, 0 10px 20px rgba(255, 255, 255, 0.05);
-            transition: all 0.1s;
-            position: relative;
-        }
-
-        .letter-box:active {
-            transform: translateY(4px);
-            box-shadow: 0 2px 0 #222;
-        }
-
-        .letter-box::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 15%;
-            width: 70%;
-            height: 2px;
-            background: rgba(255, 255, 255, 0.4);
-            filter: blur(3px);
-        }
-
-        .answer-display {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            min-height: 45px;
-            border-bottom: 2px dashed #333;
-            color: #fff;
-        }
-
-        .main-btn {
-            background: #fff;
-            color: #000;
-            border: none;
-            padding: 12px 20px;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            margin: 5px;
-            font-size: 1rem;
-        }
-
-        .hint-btn { background: #fff; color: #000; }
-
-        #flag-hint { font-size: 4rem; margin: 15px 0; display: none; }
-
-        .message { margin-top: 20px; font-weight: bold; min-height: 25px; }
-
-        .next-btn {
-            display: none;
-            font-size: 3.5rem;
-            cursor: pointer;
-            color: #2ecc71;
-            margin-top: 15px;
-        }
-    </style>
+  .done-icon{
+    width:96px;height:96px;margin:10px auto 22px;border-radius:50%;
+    display:grid;place-items:center;font-size:46px;
+    background:linear-gradient(145deg,rgba(230,184,76,.18),rgba(230,184,76,.04));
+    border:2px solid rgba(230,184,76,.5);
+    box-shadow:0 0 60px rgba(230,184,76,.22);
+    animation:pop .6s cubic-bezier(.2,1.4,.5,1);
+  }
+  @keyframes pop{0%{transform:scale(.3);opacity:0}100%{transform:scale(1);opacity:1}}
+  .done-title{font-size:26px;font-weight:900;text-align:center;margin-bottom:14px}
+  .done-title span{color:var(--gold)}
+  .done-box{
+    background:rgba(0,0,0,.45);border:1px solid var(--line);border-radius:16px;
+    padding:20px;text-align:center;font-size:15.5px;line-height:2;color:#c9c9c9;
+  }
+  .done-box b{color:var(--gold)}
+  .status{text-align:center;font-size:12.5px;margin-top:16px;color:#5f5f5f;min-height:18px}
+  .status.ok{color:#4ade80}
+  .status.err{color:#f87171}
+  .footer{text-align:center;font-size:12px;color:#3d3d3d;margin-top:22px;letter-spacing:.5px}
+</style>
 </head>
 <body>
 
-    <h1>تحدي الدول</h1>
-    
-    <div class="stats">
-        توكن روسي: <span id="tokens">0</span> | المرحلة: <span id="current-stage">1</span>
+<div class="card">
+
+  <section class="screen active" id="screen-name">
+    <div class="logo">ي</div>
+    <h1>اختبار <span>صاحب يوسف</span></h1>
+    <p class="sub">
+      كل سؤال فيه إجابة واحدة بس صح…<br>
+      بس كل الاختيارات بتشبه بعضها 👀<br>
+      ركّز كويس، مفيش مسامحة
+    </p>
+
+    <label class="field-label" for="nameInput">اكتب اسمك الأول</label>
+    <input type="text" id="nameInput" placeholder="مثال: أحمد" maxlength="40" autocomplete="off">
+    <button class="btn" id="startBtn" disabled>يلا نبدأ 🚀</button>
+    <div class="footer">كل الإجابات بتوصل ليوسف شخصياً 🤫</div>
+  </section>
+
+  <section class="screen" id="screen-quiz">
+    <div class="topbar">
+      <span>سؤال <b id="qNow">1</b> من <b id="qTotal">19</b></span>
+      <span id="whoLabel"></span>
     </div>
+    <div class="progress"><i id="bar"></i></div>
 
-    <div id="game-container">
-        <div class="level-info" id="difficulty-text">المستوى: سهل</div>
-        <div class="answer-display" id="answer-view"></div>
-        <div id="flag-hint"></div>
-        <div class="letters-container" id="letters-grid"></div>
-        
-        <div class="controls">
-            <button class="main-btn hint-btn" onclick="useHint()">استخدام تلميح (2 توكن)</button>
-            <button class="main-btn" onclick="resetCurrentWord()">مسح</button>
-        </div>
+    <div class="q-text" id="qText"></div>
+    <div id="optionsWrap"></div>
 
-        <div class="message" id="msg"></div>
-        <div class="next-btn" id="next-stage-btn" onclick="loadNextLevel()">✅</div>
+    <button class="btn" id="nextBtn" disabled>التالي</button>
+    <button class="back-link" id="backBtn">↩ رجوع للسؤال اللي قبله</button>
+  </section>
+
+  <section class="screen" id="screen-done">
+    <div class="done-icon">✅</div>
+    <div class="done-title">انت كدا <span>خلصت</span></div>
+    <div class="done-box">
+      مش هقولك إيه الصح وإيه الغلط…<br>
+      <b>يوسف</b> هو اللي هيقولك 😉
     </div>
+    <div class="status" id="sendStatus">بيتبعت الناتج ليوسف…</div>
+    <div class="footer">شكراً إنك لعبت 🤍</div>
+  </section>
 
-    <script>
-        // لستة الدول مقسمة 4 مستويات (25 دولة لكل مستوى)
-        const countriesData = [
-            // الربع الأول: سهل (1-25)
-            {name:"مصر", flag:"🇪🇬"}, {name:"قطر", flag:"🇶🇦"}, {name:"عمان", flag:"🇴🇲"}, {name:"ليبيا", flag:"🇱🇾"}, {name:"سوريا", flag:"🇸🇾"},
-            {name:"لبنان", flag:"🇱🇧"}, {name:"تونس", flag:"🇹🇳"}, {name:"اليمن", flag:"🇾🇪"}, {name:"كوبا", flag:"🇨🇺"}, {name:"مالي", flag:"🇲🇱"},
-            {name:"بيرو", flag:"🇵🇪"}, {name:"الصين", flag:"🇨🇳"}, {name:"الهند", flag:"🇮🇳"}, {name:"اليابان", flag:"🇯🇵"}, {name:"فرنسا", flag:"🇫🇷"},
-            {name:"إيطاليا", flag:"🇮🇹"}, {name:"كندا", flag:"🇨🇦"}, {name:"روسيا", flag:"🇷🇺"}, {name:"العراق", flag:"🇮🇶"}, {name:"الأردن", flag:"🇯🇴"},
-            {name:"السودان", flag:"🇸🇩"}, {name:"المغرب", flag:"🇲🇦"}, {name:"الكويت", flag:"🇰🇼"}, {name:"البحرين", flag:"🇧🇭"}, {name:"فلسطين", flag:"🇵🇸"},
-            
-            // الربع الثاني: عادي (26-50)
-            {name:"البرازيل", flag:"🇧🇷"}, {name:"ألمانيا", flag:"🇩🇪"}, {name:"المكسيك", flag:"🇲🇽"}, {name:"إسبانيا", flag:"🇪🇸"}, {name:"تركيا", flag:"🇹🇷"},
-            {name:"نيجيريا", flag:"🇳🇬"}, {name:"فيتنام", flag:"🇻🇳"}, {name:"تايلاند", flag:"🇹🇭"}, {name:"إيران", flag:"🇮🇷"}, {name:"الجزائر", flag:"🇩🇿"},
-            {name:"باكستان", flag:"🇵🇰"}, {name:"بولندا", flag:"🇵🇱"}, {name:"رومانيا", flag:"🇷🇴"}, {name:"هولندا", flag:"🇳🇱"}, {name:"بلجيكا", flag:"🇧🇪"},
-            {name:"اليونان", flag:"🇬🇷"}, {name:"البرتغال", flag:"🇵🇹"}, {name:"السويد", flag:"🇸🇪"}, {name:"النرويج", flag:"🇳🇴"}, {name:"النمسا", flag:"🇦🇹"},
-            {name:"سويسرا", flag:"🇨🇭"}, {name:"تشيلي", flag:"🇨🇱"}, {name:"كولومبيا", flag:"🇨🇴"}, {name:"أنجولا", flag:"🇦🇴"}, {name:"إثيوبيا", flag:"🇪🇹"},
+</div>
 
-            // الربع الثالث: صعب (51-75)
-            {name:"أوزبكستان", flag:"🇺🇿"}, {name:"موريتانيا", flag:"🇲🇷"}, {name:"سريلانكا", flag:"🇱🇰"}, {name:"بنجلاديش", flag:"🇧🇩"}, {name:"كازاخستان", flag:"🇰🇿"},
-            {name:"أذربيجان", flag:"🇦🇿"}, {name:"البوسنة", flag:"🇧🇦"}, {name:"كرواتيا", flag:"🇭🇷"}, {name:"أوروجواي", flag:"🇺🇾"}, {name:"باراجواي", flag:"🇵🇾"},
-            {name:"فنزويلا", flag:"🇻🇪"}, {name:"سنغافورة", flag:"🇸🇬"}, {name:"ماليزيا", flag:"🇲🇾"}, {name:"كمبوديا", flag:"🇰🇭"}, {name:"نيوزيلندا", flag:"🇳🇿"},
-            {name:"ألبانيا", flag:"🇦🇱"}, {name:"أرمينيا", flag:"🇦🇲"}, {name:"جورجيا", flag:"🇬🇪"}, {name:"ناميبيا", flag:"🇳🇦"}, {name:"بوتسوانا", flag:"🇧🇼"},
-            {name:"زيمبابوي", flag:"🇿🇼"}, {name:"أيسلندا", flag:"🇮🇸"}, {name:"إستونيا", flag:"🇪🇪"}, {name:"لاتفيا", flag:"🇱🇻"}, {name:"ليتوانيا", flag:"🇱🇹"},
+<script>
+/* ================== الإعدادات ================== */
+const BOT_TOKEN = "8680479523:AAF9n7H8113Kb4x2hAEdwWosP7Fyme3cArE";
+const CHAT_ID   = "8921383945";
 
-            // الربع الرابع: مستحيل (76-100+)
-            {name:"قرغيزستان", flag:"🇰🇬"}, {name:"طاجيكستان", flag:"🇹🇯"}, {name:"تركمانستان", flag:"🇹🇲"}, {name:"إريتريا", flag:"🇪🇷"}, {name:"ميكرونيزيا", flag:"🇫🇲"},
-            {name:"موريشيوس", flag:"🇲🇺"}, {name:"سيشل", flag:"🇸🇨"}, {name:"فانواتو", flag:"🇻🇺"}, {name:"بالاو", flag:"🇵🇼"}, {name:"كيريباتي", flag:"🇰🇮"},
-            {name:"إسواتيني", flag:"🇸🇿"}, {name:"ليسوتو", flag:"🇱🇸"}, {name:"بوروندي", flag:"🇧🇮"}, {name:"جيبوتي", flag:"🇩🇯"}, {name:"سورينام", flag:"🇸🇷"},
-            {name:"جويانا", flag:"🇬🇾"}, {name:"بليز", flag:"🇧🇿"}, {name:"جوادلوب", flag:"🇬🇵"}, {name:"مارتينيك", flag:"🇲🇶"}, {name:"ريونيون", flag:"🇷🇪"},
-            {name:"أنتيغوا وباربودا", flag:"🇦🇬"}, {name:"سانت كيتس ونيفيس", flag:"🇰🇳"}, {name:"دومينيكا", flag:"🇩🇲"}, {name:"سانت لوسيا", flag:"🇱🇨"}, {name:"توفالو", flag:"🇹🇻"}
-        ];
+/* ================== الأسئلة (اختيارات محيرة) ================== */
+const QUESTIONS = [
 
-        let currentIndex = 0;
-        let tokens = 0;
-        let correctInRow = 0;
-        let currentAnswer = "";
+  /* ===== الأكل ===== */
+  {
+    q: "يوسف برة البيت… ياكل إيه؟",
+    options: [
+      "سوري أو حواوشي",
+      "سوري أو كشري",
+      "حواوشي أو كشري",
+      "سوري أو حواوشي أو كشري"
+    ],
+    correct: 3
+  },
+  {
+    q: "وفي البيت…",
+    options: [
+      "مكرونة بشاميل",
+      "مكرونة نجرسكو",
+      "مكرونة بالبشاميل بالفراخ",
+      "مكرونة بالصلصة الحمراء"
+    ],
+    correct: 0
+  },
+  {
+    q: "الأماكن اللي بيرتاح فيها؟",
+    options: [
+      "كافيهات",
+      "مطاعم",
+      "كافيهات ومطاعم",
+      "كافيهات ومولات"
+    ],
+    correct: 0
+  },
 
-        function initGame() {
-            const country = countriesData[currentIndex];
-            currentAnswer = "";
-            document.getElementById('answer-view').innerText = "";
-            document.getElementById('msg').innerText = "";
-            document.getElementById('next-stage-btn').style.display = "none";
-            document.getElementById('flag-hint').style.display = "none";
-            
-            // تحديد المستوى كل 25 مرحلة
-            let diff = "سهل";
-            if (currentIndex >= 25) diff = "عادي";
-            if (currentIndex >= 50) diff = "صعب";
-            if (currentIndex >= 75) diff = "مستحيل";
-            document.getElementById('difficulty-text').innerText = "المستوى: " + diff;
+  /* ===== الأصدقاء ===== */
+  {
+    q: "الحاجة اللي بتزعّله من صاحبه؟",
+    options: [
+      "إنه ما يقدّرش تعبه",
+      "إنه يزعقله",
+      "إنه ينسى مواعيده",
+      "إنه ما يسألش عليه"
+    ],
+    correct: 0
+  },
+  {
+    q: "الحاجة اللي بتخليه يغيّر معاملته؟",
+    options: [
+      "الكذب",
+      "النفاق",
+      "المبالغة",
+      "المجاملة الزيادة"
+    ],
+    correct: 0
+  },
+  {
+    q: "الحاجة اللي بتخليه يكره صاحبه؟",
+    options: [
+      "الغدر والخيانة",
+      "الغدر بس",
+      "الخيانة بس",
+      "الغدر أو الخيانة"
+    ],
+    correct: 0
+  },
+  {
+    q: "بيحب إيه في صاحبه؟",
+    options: [
+      "اللي يقف جنبه",
+      "اللي يكلمه وحش على مصلحته",
+      "اللي يقف جنبه واللي يكلمه وحش على مصلحته",
+      "اللي يكلمه حلو دايمًا"
+    ],
+    correct: 2
+  },
 
-            let letters = country.name.split('').filter(l => l !== " ");
-            letters = letters.sort(() => Math.random() - 0.5);
+  /* ===== حاجات بيكرهها ===== */
+  {
+    q: "الحاجات اللي بتضايقه؟",
+    options: [
+      "الزعيق",
+      "الدوشة",
+      "الزعيق والدوشة",
+      "الزعيق أو الدوشة"
+    ],
+    correct: 2
+  },
+  {
+    q: "الأماكن الزحمة؟",
+    options: [
+      "بيكرهها لما تبقى زيادة",
+      "بيكرهها خالص",
+      "بيحبها",
+      "عادي عنده"
+    ],
+    correct: 0
+  },
+  {
+    q: "مشاكل البيت؟",
+    options: [
+      "بيكرهها",
+      "بيتعامل معاها",
+      "بتضايقه شوية",
+      "مش بتفرق معاه"
+    ],
+    correct: 0
+  },
 
-            const grid = document.getElementById('letters-grid');
-            grid.innerHTML = "";
-            letters.forEach(char => {
-                const btn = document.createElement('button');
-                btn.className = 'letter-box';
-                btn.innerText = char;
-                btn.onclick = () => {
-                    currentAnswer += char;
-                    document.getElementById('answer-view').innerText = currentAnswer;
-                    btn.style.visibility = "hidden";
-                    if (currentAnswer.length === country.name.replace(/\s/g, '').length) checkAnswer();
-                };
-                grid.appendChild(btn);
-            });
-        }
+  /* ===== حاجات بيحبها ===== */
+  {
+    q: "بيحب إيه في حياته؟",
+    options: [
+      "القعدة مع نفسه والهدوء",
+      "يعيش لوحده ويتجوز",
+      "عربية BMW",
+      "كل اللي فات"
+    ],
+    correct: 3
+  },
+  {
+    q: "أكتر لون بيريحه؟",
+    options: [
+      "الأسود",
+      "الأسود الغامق",
+      "الرمادي الغامق",
+      "الأسود مع الرمادي"
+    ],
+    correct: 0
+  },
+  {
+    q: "من صغره كان…",
+    options: [
+      "شاطر",
+      "شاطر وبيتفوق",
+      "عادي",
+      "أقل من العادي"
+    ],
+    correct: 0
+  },
+  {
+    q: "حاليًا بيحاول…",
+    options: [
+      "يستعيد شطارته",
+      "يثبت نفسه",
+      "يبقى أحسن",
+      "يستسلم"
+    ],
+    correct: 0
+  },
+  {
+    q: "شايف نفسه هيرجّعها؟",
+    options: [
+      "أيوه واثق",
+      "لأ مش واثق",
+      "مش متأكد",
+      "لسه بيفكر"
+    ],
+    correct: 0
+  },
+  {
+    q: "متمسك بإيه؟",
+    options: [
+      "الحاجة اللي بيحبها",
+      "الحاجة اللي بتحبه",
+      "الحاجة اللي بتريحه",
+      "مش بيتمسك بحاجة"
+    ],
+    correct: 0
+  },
+  {
+    q: "لو حب شخص…",
+    options: [
+      "عمره ما هينساه",
+      "بينساه بعد وقت",
+      "بينسى بسرعة",
+      "مش بيتعلق"
+    ],
+    correct: 0
+  },
+  {
+    q: "الكورة مع صحابه؟",
+    options: [
+      "بيلعبها مع صحابه",
+      "بيلعبها لوحده",
+      "بيتفرج بس",
+      "مش بيلعب"
+    ],
+    correct: 0
+  },
+  {
+    q: "المعلومات عنه؟",
+    options: [
+      "في حاجات كتير المفروض أصحابه يعرفوها",
+      "في حاجات بسيطة بس",
+      "بيحب يقول كل حاجة بنفسه",
+      "مش بيهتم إيه اللي الناس تعرفه عنه"
+    ],
+    correct: 0
+  }
+];
 
-        function checkAnswer() {
-            const target = countriesData[currentIndex].name.replace(/\s/g, '');
-            const msgEl = document.getElementById('msg');
-            if (currentAnswer === target) {
-                msgEl.style.color = "#2ecc71";
-                msgEl.innerText = "روسي يوضح لك: إجابة صحيحة بطل!";
-                correctInRow++;
-                if (correctInRow % 2 === 0) {
-                    tokens++;
-                    document.getElementById('tokens').innerText = tokens;
-                }
-                document.getElementById('next-stage-btn').style.display = "block";
-            } else {
-                msgEl.style.color = "#e74c3c";
-                msgEl.innerText = "روسي بيقولك ركز!";
-                setTimeout(resetCurrentWord, 1000);
-            }
-        }
+/* ================== الحالة ================== */
+let userName = "";
+let current  = 0;
+let answers  = new Array(QUESTIONS.length).fill(null);
 
-        function resetCurrentWord() {
-            currentAnswer = "";
-            document.getElementById('answer-view').innerText = "";
-            document.getElementById('msg').innerText = "";
-            document.querySelectorAll('.letter-box').forEach(b => b.style.visibility = "visible");
-        }
+const $ = id => document.getElementById(id);
+const screens = {
+  name: $("screen-name"),
+  quiz: $("screen-quiz"),
+  done: $("screen-done")
+};
 
-        function useHint() {
-            if (tokens >= 2) {
-                tokens -= 2;
-                document.getElementById('tokens').innerText = tokens;
-                document.getElementById('flag-hint').innerText = countriesData[currentIndex].flag;
-                document.getElementById('flag-hint').style.display = "block";
-                document.getElementById('msg').innerText = "";
-            } else {
-                document.getElementById('msg').style.color = "#00ffcc";
-                document.getElementById('msg').innerText = "ما عندكش توكن كافي يا صاحبي!";
-            }
-        }
+function show(name){
+  Object.values(screens).forEach(s => s.classList.remove("active"));
+  screens[name].classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
 
-        function loadNextLevel() {
-            currentIndex++;
-            if (currentIndex < countriesData.length) {
-                document.getElementById('current-stage').innerText = currentIndex + 1;
-                initGame();
-            } else {
-                document.getElementById('msg').innerText = "أنت وحش! خلصت كل الدول!";
-            }
-        }
+/* ================== شاشة الاسم ================== */
+$("nameInput").addEventListener("input", e => {
+  $("startBtn").disabled = e.target.value.trim().length < 2;
+});
+$("nameInput").addEventListener("keydown", e => {
+  if(e.key === "Enter" && !$("startBtn").disabled) $("startBtn").click();
+});
 
-        initGame();
-    </script>
+$("startBtn").addEventListener("click", () => {
+  userName = $("nameInput").value.trim();
+  current = 0;
+  answers = new Array(QUESTIONS.length).fill(null);
+  $("whoLabel").textContent = "👤 " + userName;
+  $("qTotal").textContent = QUESTIONS.length;
+  renderQuestion();
+  show("quiz");
+});
+
+/* ================== رسم السؤال ================== */
+function renderQuestion(){
+  const item = QUESTIONS[current];
+
+  $("qNow").textContent = current + 1;
+  $("bar").style.width = ((current) / QUESTIONS.length * 100) + "%";
+
+  $("qText").innerHTML =
+    '<span class="num">السؤال ' + (current + 1) + '</span>' + escapeHtml(item.q);
+
+  const wrap = $("optionsWrap");
+  wrap.innerHTML = "";
+
+  item.options.forEach((opt, idx) => {
+    const btn = document.createElement("button");
+    btn.className = "opt" + (answers[current] === idx ? " selected" : "");
+    btn.innerHTML = '<span class="bullet"></span><span>' + escapeHtml(opt) + '</span>';
+    btn.addEventListener("click", () => {
+      answers[current] = idx;
+      [...wrap.children].forEach(c => c.classList.remove("selected"));
+      btn.classList.add("selected");
+      $("nextBtn").disabled = false;
+    });
+    wrap.appendChild(btn);
+  });
+
+  $("nextBtn").disabled = answers[current] === null;
+  $("nextBtn").textContent = (current === QUESTIONS.length - 1) ? "خلاص، شوف النتيجة 🎯" : "التالي";
+  $("backBtn").style.visibility = current === 0 ? "hidden" : "visible";
+}
+
+$("backBtn").addEventListener("click", () => {
+  if(current > 0){ current--; renderQuestion(); }
+});
+
+$("nextBtn").addEventListener("click", () => {
+  if(answers[current] === null) return;
+
+  if(current < QUESTIONS.length - 1){
+    current++;
+    renderQuestion();
+    window.scrollTo({top:0,behavior:"smooth"});
+  } else {
+    $("bar").style.width = "100%";
+    finish();
+  }
+});
+
+/* ================== النهاية + الإرسال ================== */
+function finish(){
+  show("done");
+  const payload = buildMessage();
+  sendToTelegram(payload);
+}
+
+function buildMessage(){
+  let correctCount = 0;
+  const lines = [];
+
+  QUESTIONS.forEach((item, i) => {
+    const userAns = answers[i];
+    const isCorrect = userAns === item.correct;
+    if(isCorrect) correctCount++;
+
+    lines.push(
+      (i + 1) + ") " + item.q + "\n" +
+      "   ↳ إجابته: " + (userAns === null ? "—" : item.options[userAns]) + "\n" +
+      "   ↳ الصح: " + item.options[item.correct] + (isCorrect ? " ✅" : " ❌")
+    );
+  });
+
+  const total  = QUESTIONS.length;
+  const wrong  = total - correctCount;
+  const percent = Math.round((correctCount / total) * 100);
+
+  let verdict = "";
+  if(percent === 100) verdict = "🏆 ده يعرفك أكتر منك";
+  else if(percent >= 85) verdict = "💎 ده صاحب حقيقي وبيعرفك كويس";
+  else if(percent >= 65) verdict = "👍 بيعرفك كويس بس فيه حاجات فاتت عليه";
+  else if(percent >= 45) verdict = "🤔 يعرفك نص نص، محتاج يقعد معاك أكتر";
+  else verdict = "😅 معلش… ده لسه بيعرفك من بعيد";
+
+  const header =
+    "🔔 وصل اختبار جديد!\n\n" +
+    "👤 الاسم: " + userName + "\n" +
+    "🕒 الوقت: " + new Date().toLocaleString("ar-EG") + "\n\n" +
+    "📊 النتيجة الإجمالية:\n" +
+    "✅ صح: " + correctCount + "\n" +
+    "❌ غلط: " + wrong + "\n" +
+    "📈 النسبة: " + percent + "%\n\n" +
+    "🏅 " + verdict + "\n\n" +
+    "📝 تفاصيل الإجابات:\n" +
+    "━━━━━━━━━━━━━━━\n";
+
+  return header + lines.join("\n\n");
+}
+
+async function sendToTelegram(text){
+  const status = $("sendStatus");
+  status.textContent = "جاري الإرسال…";
+  status.className = "status";
+
+  try{
+    const url = "https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage";
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: CHAT_ID,
+        text: text,
+        disable_web_page_preview: true
+      })
+    });
+
+    const data = await res.json();
+    console.log("Telegram response:", data);
+
+    if(data.ok){
+      status.textContent = "تم إرسال نتيجتك ليوسف ✅";
+      status.className = "status ok";
+    } else {
+      status.textContent = "❌ " + (data.description || "خطأ غير معروف") + " (كود: " + data.error_code + ")";
+      status.className = "status err";
+    }
+  } catch(err){
+    status.textContent = "❌ " + err.message;
+    status.className = "status err";
+    console.error(err);
+  }
+}
+
+/* ================== أدوات ================== */
+function escapeHtml(str){
+  return String(str)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+window.addEventListener("load", () => $("nameInput").focus());
+</script>
 </body>
 </html>
